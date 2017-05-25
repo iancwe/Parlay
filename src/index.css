@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.selected{
+  color: red;
+}
+
+li{
+  list-style-type: none;
+  display: inline;
+  padding: 5px;
+}
