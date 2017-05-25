@@ -9,22 +9,21 @@ class App extends Component {
   render () {
     return (
       <div className='App'>
-        <div className='App-header'>
-          <Router>
-            <div>
-              <ul>
-                <li><NavLink to='/home' activeClassName='selected' >Parlay</NavLink></li>
-                <li><NavLink to='/profile' activeClassName='selected' >Profile</NavLink></li>
-                <li><NavLink to='/logout' activeClassName='selected' >Log Out</NavLink></li>
-              </ul>
-              <hr />
-              <Route exact path='/home' component={Homedogs} />
+        <Router>
+          <div>
+            <ul>
+              <li><NavLink to='/' activeClassName='selected' >Parlay</NavLink></li>
+              <li><NavLink to='/profile' activeClassName='selected' >Profile</NavLink></li>
+              <li><NavLink to='/logout' activeClassName='selected' >Log Out</NavLink></li>
+            </ul>
+            <hr />
+            <div className='App-intro'>
+              <Route exact path='/' component={Homedogs} />
               <Route exact path='/profile' component={profile} />
               <Route exact path='/logout' component={logout} />
             </div>
-          </Router>
-        </div>
-        <div className='App-intro' />
+          </div>
+        </Router>
       </div>
     )
   }
