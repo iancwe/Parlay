@@ -37,15 +37,14 @@ class Homedogs extends React.Component {
   // Mounting dashboard league api
   componentDidUpdate () {
     axios({
-      headers: { 'X-Auth-Token': '52ddfb1ff2c74d878f508d4a7c2c82e7' },
+      headers: { 'X-Auth-Token': process.env.REACT_APP_footballAPI },
       method: 'get',
-      url: 'http://api.football-data.org/v1/soccerseasons/' + this.state.apiLeague + '/fixtures',
+      url: 'http://api.football-data.org/v1/soccerseasons/' + this.state.apiLeague + '/teams',
       responseType: 'json',
       crossDomain: true
     })
   .then((response) => {
-    // console.log('this is from the first then', response.data.fixtures)
-    let fixtures = response.data.fixtures
+    let fixtures = response.data.teams
     console.log('this is from the first then', fixtures)
     return fixtures
   })
@@ -74,9 +73,12 @@ class Homedogs extends React.Component {
               <label>
                 <input type='radio' name='league' value='germ' onClick={() => this.german()} /> German
             </label>
-            {/* <label>
-              <input type='select'
-            </label> */}
+              <label> Team:
+              <select>
+                <option>Hull Ciy</option>
+                <option>Man Ciy</option>
+              </select>
+              </label>
             </form>
           </div>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

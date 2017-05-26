@@ -4,8 +4,6 @@ import App from './components/app/App'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
 
-require('dotenv').config({silent: true})
-
 // var config={
 //   apikey:process.env.REACT_APP_footballAPI
 // }
