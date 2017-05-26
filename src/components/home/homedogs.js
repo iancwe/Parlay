@@ -1,56 +1,61 @@
 import React from 'react'
 import axios from 'axios'
+import TeamList from '../teamlist/TeamList'
 
 class Homedogs extends React.Component {
 
   constructor (props) {
     super(props)
     this.state = {
-      apiLeague: '426'
+      apiLeague: '426',
+      teamcrest: ' ',
+      teams: []
     }
   }
 
   // Function to be run when you select EPL
   eng () {
-    console.log('epl Chosen')
-    this.setState({
-      apiLeague: '426'
-    })
+    this.display('426')
   }
 
   // Function to be run when you select Laliga
   spain () {
     console.log('laliga Chosen')
-    this.setState({
-      apiLeague: '436'
-    })
+    this.display('436')
   }
 
   // Function to be run when you select Bundesliga
   german () {
     console.log('Bundesliga Chosen')
-    this.setState({
-      apiLeague: '430'
-    })
+    this.display('430')
   }
 
-  // Mounting dashboard league api
-  componentDidUpdate () {
+  display (data) {
     axios({
       headers: { 'X-Auth-Token': process.env.REACT_APP_footballAPI },
       method: 'get',
-      url: 'http://api.football-data.org/v1/soccerseasons/' + this.state.apiLeague + '/teams',
+      url: 'http://api.football-data.org/v1/soccerseasons/' + data + '/teams',
       responseType: 'json',
       crossDomain: true
     })
-  .then((response) => {
-    let fixtures = response.data.teams
-    console.log('this is from the first then', fixtures)
-    return fixtures
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+    .then((response) => {
+      let teamList = response.data.teams
+      return teamList
+    })
+    .then((teamList) => {
+      console.log('teamList is 1', teamList)
+      this.setState({
+        apiLeague: data,
+        teams: teamList
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
+  componentDidMount () {
+    this.display('426')
   }
 
   render () {
@@ -74,10 +79,7 @@ class Homedogs extends React.Component {
                 <input type='radio' name='league' value='germ' onClick={() => this.german()} /> German
             </label>
               <label> Team:
-              <select>
-                <option>Hull Ciy</option>
-                <option>Man Ciy</option>
-              </select>
+              <TeamList teams={this.state.teams} />
               </label>
             </form>
           </div>
