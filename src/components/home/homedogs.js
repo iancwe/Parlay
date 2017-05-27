@@ -30,6 +30,7 @@ class Homedogs extends React.Component {
     this.display('430')
   }
 
+  // Function to run the chosen league
   display (data) {
     axios({
       headers: { 'X-Auth-Token': process.env.REACT_APP_footballAPI },
