@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import TeamList from '../teamlist/TeamList'
+import FilteredTeam from '../filteredteam/FilteredTeam'
 
 class Homedogs extends React.Component {
 
@@ -9,7 +10,8 @@ class Homedogs extends React.Component {
     this.state = {
       apiLeague: '426',
       teamcrest: ' ',
-      teams: []
+      teams: [],
+      team: <FilteredTeam img={'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg'} />
     }
   }
 
@@ -28,6 +30,15 @@ class Homedogs extends React.Component {
   german () {
     console.log('Bundesliga Chosen')
     this.display('430')
+  }
+
+  // selected team from List
+  teamSelect (e) {
+    e.preventDefault()
+    console.log(e.target.value)
+    this.setState({
+      team: <FilteredTeam img={e.target.value} />
+    })
   }
 
   // Function to run the chosen league
@@ -80,10 +91,11 @@ class Homedogs extends React.Component {
                 <input type='radio' name='league' value='germ' onClick={() => this.german()} /> German
             </label>
               <label> Team:
-              <TeamList teams={this.state.teams} />
+              <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect(e)} />
               </label>
             </form>
           </div>
+          {this.state.team}
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           <table>
             <thead>
