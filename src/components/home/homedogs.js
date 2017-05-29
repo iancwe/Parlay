@@ -11,7 +11,7 @@ class Homedogs extends React.Component {
       apiLeague: '426',
       teamcrest: ' ',
       teams: [],
-      team: <FilteredTeam img={'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg'} />
+      team: <FilteredTeam img={'https://upload.wikimedia.org/wikipedia/de/4/41/Afc_bournemouth.svg'} />
     }
   }
 
@@ -35,9 +35,11 @@ class Homedogs extends React.Component {
   // selected team from List
   teamSelect (e) {
     e.preventDefault()
-    console.log(e.target.value)
+    console.log(e.target.value, this.state.teams[e.target.value])
+    let chosenTeamData = this.state.teams[e.target.value]
+    console.log(chosenTeamData.crestUrl)
     this.setState({
-      team: <FilteredTeam img={e.target.value} />
+      team: <FilteredTeam img={chosenTeamData.crestUrl} alt={chosenTeamData.code} />
     })
   }
 
