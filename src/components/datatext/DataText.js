@@ -3,6 +3,13 @@ import axios from 'axios'
 
 class DataText extends React.Component {
 
+  constructor (props) {
+    super(props)
+    this.state = {
+      homeGames: 0
+    }
+  }
+
   // calculation
   calculation () {
     // console.log(this.props.datatext)
@@ -47,7 +54,10 @@ class DataText extends React.Component {
       console.log('awayWins ' + awayWins)
       console.log('awayLoss ' + awayLoss)
       console.log((totalGames - homeGames) - awayWins - awayLoss)
-      return selectedresult
+      this.setState({
+        homeGames: homeGames
+      })
+      // return selectedresult
     })
     .catch((err) => {
       console.log(err)
@@ -59,6 +69,7 @@ class DataText extends React.Component {
         <h1>DataText</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <button onClick={() => this.calculation()}>Click Me</button>
+        <p>Total home games {this.state.homeGames}</p>
         <table>
           <thead>
             <tr>
