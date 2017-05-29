@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import TeamList from '../teamlist/TeamList'
 import FilteredTeam from '../filteredteam/FilteredTeam'
+import DataText from '../datatext/DataText'
 
 class Homedogs extends React.Component {
 
@@ -9,9 +10,10 @@ class Homedogs extends React.Component {
     super(props)
     this.state = {
       apiLeague: '426',
-      teamcrest: ' ',
       teams: [],
-      team: <FilteredTeam img={'https://upload.wikimedia.org/wikipedia/de/4/41/Afc_bournemouth.svg'} />
+      team: <FilteredTeam img={'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg'} />,
+      datatext: 'http://api.football-data.org/v1/teams/65/fixtures',
+      teamName: 'Manchester City FC'
     }
   }
 
@@ -37,9 +39,10 @@ class Homedogs extends React.Component {
     e.preventDefault()
     console.log(e.target.value, this.state.teams[e.target.value])
     let chosenTeamData = this.state.teams[e.target.value]
-    console.log(chosenTeamData.crestUrl)
     this.setState({
-      team: <FilteredTeam img={chosenTeamData.crestUrl} alt={chosenTeamData.code} />
+      team: <FilteredTeam img={chosenTeamData.crestUrl} alt={chosenTeamData.code} />,
+      datatext: chosenTeamData._links.fixtures.href,
+      teamName: chosenTeamData.name
     })
   }
 
@@ -57,7 +60,7 @@ class Homedogs extends React.Component {
       return teamList
     })
     .then((teamList) => {
-      console.log('teamList is 1', teamList)
+      console.log(teamList)
       this.setState({
         apiLeague: data,
         teams: teamList
@@ -98,15 +101,7 @@ class Homedogs extends React.Component {
             </form>
           </div>
           {this.state.team}
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <table>
-            <thead>
-              <tr>
-                <th>Return of Investment (ROI)</th>
-                <th>5%</th>
-              </tr>
-            </thead>
-          </table>
+          <DataText datatext={this.state.datatext} name={this.state.teamName} />
         </div>
       </div>
     )
