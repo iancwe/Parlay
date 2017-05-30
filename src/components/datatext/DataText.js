@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import PieChart from '../piechart/PieChart'
+import { Table } from 'react-bootstrap'
 
 class DataText extends React.Component {
 
@@ -133,24 +134,24 @@ class DataText extends React.Component {
       <div>
         <PieChart graphData={this.state} />
         <h1>Latest Season Analysis</h1>
-        <table>
-          <thead>
+        <Table responsive condensed>
+          <tbody>
             <tr>
-              <th>Home Wins(HW) {this.state.homeWins}</th>
-              <th>Home Draw(HD) {this.state.homeDraw}</th>
-              <th>Away Wins(AW) {this.state.awayWins}</th>
-              <th>Home Goals(HG) {this.state.homeGoals}</th>
-              <th>Away Goals(AG) {this.state.awayGoals}</th>
+              <th>Home Wins(HW): {this.state.homeWins}</th>
+              <th>Home Draw(HD): {this.state.homeDraw}</th>
+              <th>Away Wins(AW): {this.state.awayWins}</th>
+              <th>Home Goals(HG): {this.state.homeGoals}</th>
+              <th>Away Goals(AG): {this.state.awayGoals}</th>
             </tr>
             <tr>
-              <th>Home Loss(HL) {this.state.homeLoss}</th>
-              <th>Away Draw(AD) {this.state.awayDraw}</th>
-              <th>Away Loss(AL) {this.state.awayLoss}</th>
-              <th>Home Against(HA) {this.state.homeAgainst}</th>
-              <th>Away Against(AA) {this.state.awayAgainst}</th>
+              <th>Home Loss(HL): {this.state.homeLoss}</th>
+              <th>Away Draw(AD): {this.state.awayDraw}</th>
+              <th>Away Loss(AL): {this.state.awayLoss}</th>
+              <th>Home Against(HA): {this.state.homeAgainst}</th>
+              <th>Away Against(AA): {this.state.awayAgainst}</th>
             </tr>
-          </thead>
-        </table>
+          </tbody>
+        </Table>
       </div>
     )
   }

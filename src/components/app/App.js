@@ -4,6 +4,7 @@ import Homedogs from '../home/homedogs'
 import profile from '../profile/profile'
 import logout from '../log/logout'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import { Navbar, Nav, MenuItem } from 'react-bootstrap'
 
 class App extends Component {
   render () {
@@ -11,11 +12,20 @@ class App extends Component {
       <div className='App'>
         <Router>
           <div>
-            <ul>
-              <li><NavLink to='/' activeClassName='selected' >Parlay</NavLink></li>
-              <li><NavLink to='/profile' activeClassName='selected' >Profile</NavLink></li>
-              <li><NavLink to='/logout' activeClassName='selected' >Log Out</NavLink></li>
-            </ul>
+            <Navbar>
+              <Navbar.Header>
+                <Navbar.Brand>
+                  <NavLink to='/'>Parlay</NavLink>
+                </Navbar.Brand>
+                <Navbar.Toggle />
+              </Navbar.Header>
+              <Navbar.Collapse>
+                <Nav pullRight>
+                  <MenuItem><NavLink to='/profile' activeClassName='selected' >Profile</NavLink></MenuItem>
+                  <MenuItem><NavLink to='/logout' activeClassName='selected' >Log Out</NavLink></MenuItem>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
             <hr />
             <div className='App-intro'>
               <Route exact path='/' component={Homedogs} />
