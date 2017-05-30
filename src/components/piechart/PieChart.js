@@ -50,15 +50,13 @@ class PieChart extends React.Component {
       }
     ]
 
-    console.log(data)
     // check if the data has an 0 or value
     data = data.filter((cat) => {
       if (cat.amount > 0) {
         return cat
       }
+      return data
     })
-
-    console.log(data)
 
     var arc = g.selectAll('.arc')
     .data(pie(data))

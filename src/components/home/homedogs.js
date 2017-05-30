@@ -79,7 +79,7 @@ class Homedogs extends React.Component {
     return (
       // div for the main layout component
       <div>
-        <h3>Matches Filter</h3>
+        <h1>Matches Filter</h1>
         {/* container for result module component */}
         <div>
           {/* container for the league choices */}

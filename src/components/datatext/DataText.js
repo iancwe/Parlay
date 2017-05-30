@@ -16,6 +16,10 @@ class DataText extends React.Component {
       awayLoss: 0,
       awayDraw: 0,
       totalGames: 0,
+      homeGoals: 0,
+      homeAgainst: 0,
+      awayGoals: 0,
+      awayAgainst: 0,
       teamName: null
     }
   }
@@ -36,6 +40,10 @@ class DataText extends React.Component {
       let homeLoss = 0
       let awayWins = 0
       let awayLoss = 0
+      let homeGoals = 0
+      let homeAgainst = 0
+      let awayGoals = 0
+      let awayAgainst = 0
       let selectedresult = response.data.fixtures
       let totalGames = selectedresult.length
       console.log(selectedresult)
@@ -43,27 +51,43 @@ class DataText extends React.Component {
         // homegames only
         if (matches.homeTeamName === this.props.name) {
           homeGames++
+          // homegame win
           if (matches.result.goalsHomeTeam > matches.result.goalsAwayTeam) {
+            homeGoals += matches.result.goalsHomeTeam
+            homeAgainst += matches.result.goalsAwayTeam
             homeWins++
+            // homegame loss
           } else if (matches.result.goalsHomeTeam < matches.result.goalsAwayTeam) {
+            homeGoals += matches.result.goalsHomeTeam
+            homeAgainst += matches.result.goalsAwayTeam
             homeLoss++
           }
         } else {
           // awaygames only
           if (matches.result.goalsAwayTeam > matches.result.goalsHomeTeam) {
+            // awaygame win
+            awayGoals += matches.result.goalsAwayTeam
+            awayAgainst += matches.result.goalsHomeTeam
             awayWins++
           } else if (matches.result.goalsAwayTeam < matches.result.goalsHomeTeam) {
+            // awaygame loss
+            awayGoals += matches.result.goalsAwayTeam
+            awayAgainst += matches.result.goalsHomeTeam
             awayLoss++
           }
         }
       })
       console.log('this is the amount of homeGames ' + homeGames)
       console.log('this is the amount of awayGames ' + (totalGames - homeGames))
-      console.log('homewins ' + homeWins)
-      console.log('homeloss ' + homeLoss)
+      console.log('amount of homegoals ' + homeGoals)
+      console.log('amount of homeAgainst ' + homeAgainst)
+      console.log('amount of awayGoals ' + awayGoals)
+      console.log('amount of awayAgainst ' + awayAgainst)
+      // console.log('homewins ' + homeWins)
+      // console.log('homeloss ' + homeLoss)
       // console.log((homeGames - homeWins - homeLoss))
-      console.log('awayWins ' + awayWins)
-      console.log('awayLoss ' + awayLoss)
+      // console.log('awayWins ' + awayWins)
+      // console.log('awayLoss ' + awayLoss)
       // console.log((totalGames - homeGames) - awayWins - awayLoss)
       this.setState({
         homeGames: homeGames,
@@ -75,7 +99,11 @@ class DataText extends React.Component {
         awayLoss: awayLoss,
         awayDraw: ((totalGames - homeGames) - awayWins - awayLoss),
         totalGames: totalGames,
-        teamName: this.props.name
+        teamName: this.props.name,
+        homeGoals: homeGoals,
+        homeAgainst: homeAgainst,
+        awayGoals: awayGoals,
+        awayAgainst: awayAgainst
       })
       // return selectedresult
     })
@@ -104,17 +132,22 @@ class DataText extends React.Component {
     return (
       <div>
         <PieChart graphData={this.state} />
-        <h1>DataText</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        {/* <button onClick={() => this.calculation()}>Click Me</button> */}
-        <p>Total home games {this.state.homeGames}</p>
-        <p>Home Draws {this.state.homeDraw}</p>
-        <p>Away Draws {this.state.awayDraw}</p>
+        <h1>Latest Season Analysis</h1>
         <table>
           <thead>
             <tr>
-              <th>Return of Investment (ROI)</th>
-              <th>5%</th>
+              <th>Home Wins(HW) {this.state.homeWins}</th>
+              <th>Home Draw(HD) {this.state.homeDraw}</th>
+              <th>Away Wins(AW) {this.state.awayWins}</th>
+              <th>Home Goals(HG) {this.state.homeGoals}</th>
+              <th>Away Goals(AG) {this.state.awayGoals}</th>
+            </tr>
+            <tr>
+              <th>Home Loss(HL) {this.state.homeLoss}</th>
+              <th>Away Draw(AD) {this.state.awayDraw}</th>
+              <th>Away Loss(AL) {this.state.awayLoss}</th>
+              <th>Home Against(HA) {this.state.homeAgainst}</th>
+              <th>Away Against(AA) {this.state.awayAgainst}</th>
             </tr>
           </thead>
         </table>
