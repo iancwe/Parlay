@@ -80,16 +80,6 @@ class DataText extends React.Component {
       })
       console.log('this is the amount of homeGames ' + homeGames)
       console.log('this is the amount of awayGames ' + (totalGames - homeGames))
-      console.log('amount of homegoals ' + homeGoals)
-      console.log('amount of homeAgainst ' + homeAgainst)
-      console.log('amount of awayGoals ' + awayGoals)
-      console.log('amount of awayAgainst ' + awayAgainst)
-      // console.log('homewins ' + homeWins)
-      // console.log('homeloss ' + homeLoss)
-      // console.log((homeGames - homeWins - homeLoss))
-      // console.log('awayWins ' + awayWins)
-      // console.log('awayLoss ' + awayLoss)
-      // console.log((totalGames - homeGames) - awayWins - awayLoss)
       this.setState({
         homeGames: homeGames,
         homeWins: homeWins,

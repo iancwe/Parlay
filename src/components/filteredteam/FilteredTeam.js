@@ -3,7 +3,7 @@ import React from 'react'
 const FilteredTeam = (props) =>
 (
   <div>
-    <img src={props.img} alt={props.name} height='100em' width='100em' />
+    <img src={props.img} alt={props.name} height='275' width='275' />
   </div>
 )
 

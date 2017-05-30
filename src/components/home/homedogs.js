@@ -3,6 +3,7 @@ import axios from 'axios'
 import TeamList from '../teamlist/TeamList'
 import FilteredTeam from '../filteredteam/FilteredTeam'
 import DataText from '../datatext/DataText'
+import { Grid, Row, Col } from 'react-bootstrap'
 
 class Homedogs extends React.Component {
 
@@ -78,32 +79,34 @@ class Homedogs extends React.Component {
   render () {
     return (
       // div for the main layout component
-      <div>
+      <Grid>
         <h1>Matches Filter</h1>
         {/* container for result module component */}
-        <div>
+        <Row>
           {/* container for the league choices */}
-          <div>
-            <label>Leagues</label>
+          <Col xs={4} md={5}>
+            <h4>Leagues</h4>
             <form>
               <label>
                 <input type='radio' name='league' value='epl' onClick={() => this.eng()} /> English
-            </label>
+              </label>
               <label>
                 <input type='radio' name='league' value='laliga' onClick={() => this.spain()} /> Spanish
-            </label>
+              </label>
               <label>
                 <input type='radio' name='league' value='germ' onClick={() => this.german()} /> German
-            </label>
-              <label> Team:
-              <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect(e)} />
               </label>
             </form>
-          </div>
-          {this.state.team}
+            <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect(e)} />
+          </Col>
+          <Col xs={4} md={5}>
+            {this.state.team}
+          </Col>
+        </Row>
+        <Row>
           <DataText datatext={this.state.datatext} name={this.state.teamName} update={false} />
-        </div>
-      </div>
+        </Row>
+      </Grid>
     )
   }
 

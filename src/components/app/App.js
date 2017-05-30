@@ -26,7 +26,6 @@ class App extends Component {
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
-            <hr />
             <div className='App-intro'>
               <Route exact path='/' component={Homedogs} />
               <Route exact path='/profile' component={profile} />
