@@ -3,6 +3,7 @@ import axios from 'axios'
 import TeamList from '../teamlist/TeamList'
 import FilteredTeam from '../filteredteam/FilteredTeam'
 import DataText from '../datatext/DataText'
+import PieChart from '../piechart/PieChart'
 
 class Homedogs extends React.Component {
 
@@ -101,6 +102,7 @@ class Homedogs extends React.Component {
             </form>
           </div>
           {this.state.team}
+          <PieChart />
           <DataText datatext={this.state.datatext} name={this.state.teamName} />
         </div>
       </div>

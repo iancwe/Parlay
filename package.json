@@ -8,6 +8,7 @@
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
+    "d3": "^4.9.1",
     "react-router-dom": "^4.1.1",
     "react-scripts": "1.0.5"
   },
