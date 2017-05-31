@@ -77,8 +77,6 @@ class Homedogs extends React.Component {
         apiLeague: data,
         teams: teamList
       })
-      console.log(this.state.apiLeague)
-      console.log(typeof (this.state.apiLeague))
     })
     .catch((err) => {
       console.log(err)

@@ -21,15 +21,15 @@ class App extends Component {
               </Navbar.Header>
               <Navbar.Collapse>
                 <Nav pullRight>
-                  <MenuItem><NavLink to='/profile' activeClassName='selected' >Head2Head</NavLink></MenuItem>
-                  <MenuItem><NavLink to='/logout' activeClassName='selected' >Log Out</NavLink></MenuItem>
+                  <MenuItem><NavLink to='/head2head' activeClassName='selected' >Head2Head</NavLink></MenuItem>
+                  <MenuItem><NavLink to='/strength' activeClassName='selected' >Team Breakdown</NavLink></MenuItem>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
             <div className='App-intro'>
               <Route exact path='/' component={Homedogs} />
-              <Route exact path='/profile' component={profile} />
-              <Route exact path='/logout' component={logout} />
+              <Route exact path='/head2head' component={profile} />
+              <Route exact path='/strength' component={logout} />
             </div>
           </div>
         </Router>
