@@ -3,7 +3,7 @@ import axios from 'axios'
 import TeamList from '../teamlist/TeamList'
 import FilteredTeam from '../filteredteam/FilteredTeam'
 import DataText from '../datatext/DataText'
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Col } from 'react-bootstrap'
 
 class Homedogs extends React.Component {
 
