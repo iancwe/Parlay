@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import TeamList from '../teamlist/TeamList'
+import FilteredTeam from '../filteredteam/FilteredTeam2'
 
 class Profile extends React.Component {
 
@@ -10,7 +11,11 @@ class Profile extends React.Component {
       apiLeague: ' ',
       teams: [],
       team1: '',
-      team2: ''
+      team2: '',
+      team1name: 'Team A',
+      team2name: 'Team B',
+      team1Crest: '',
+      team2Crest: ''
     }
   }
 
@@ -61,9 +66,9 @@ class Profile extends React.Component {
     e.preventDefault()
     console.log(e.target.value, this.state.teams[e.target.value])
     let chosenTeamData = this.state.teams[e.target.value]
-    console.log('team1 ' + chosenTeamData.name)
     this.setState({
-      team1: chosenTeamData.name
+      team1name: chosenTeamData.shortName,
+      team1Crest: chosenTeamData.crestUrl
     })
   }
 
@@ -72,9 +77,10 @@ class Profile extends React.Component {
     e.preventDefault()
     console.log(e.target.value, this.state.teams[e.target.value])
     let chosenTeamData = this.state.teams[e.target.value]
-    console.log('team2 ' + chosenTeamData.name)
     this.setState({
-      team2: chosenTeamData.name
+      team2name: chosenTeamData.shortName,
+      team2Crest: chosenTeamData.crestUrl
+
     })
   }
 
@@ -94,8 +100,12 @@ class Profile extends React.Component {
             <input type='radio' name='league' value='germ' onClick={() => this.german()} /> German
             </label>
         </form>
+        <label>{this.state.team1name}</label>
         <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect(e)} />
+        <FilteredTeam h2hpic={this.state.team1Crest} />
+        <label>{this.state.team2name}</label>
         <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect2(e)} />
+        <FilteredTeam h2hpic={this.state.team2Crest} />
       </div>
     )
   }

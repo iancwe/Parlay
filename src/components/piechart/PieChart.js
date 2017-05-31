@@ -55,6 +55,7 @@ class PieChart extends React.Component {
       if (cat.amount > 0) {
         return cat
       }
+      return data
     })
 
     var arc = g.selectAll('.arc')

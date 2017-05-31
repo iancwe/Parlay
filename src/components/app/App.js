@@ -21,8 +21,8 @@ class App extends Component {
               </Navbar.Header>
               <Navbar.Collapse>
                 <Nav pullRight>
-                  <MenuItem><NavLink to='/head2head' activeClassName='selected' >Head2Head</NavLink></MenuItem>
-                  <MenuItem><NavLink to='/strength' activeClassName='selected' >Team Breakdown</NavLink></MenuItem>
+                  <MenuItem><NavLink to='/head2head'>Head2Head</NavLink></MenuItem>
+                  <MenuItem><NavLink to='/strength'>Team Breakdown</NavLink></MenuItem>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
