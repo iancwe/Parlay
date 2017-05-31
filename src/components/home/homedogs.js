@@ -82,9 +82,7 @@ class Homedogs extends React.Component {
       <Grid>
         <h1>Matches Filter</h1>
         {/* container for result module component */}
-        <Row>
-          {/* container for the league choices */}
-          <Col xs={4} md={5}>
+          <Col xs={4} md={4}>
             <h4>Leagues</h4>
             <form>
               <label>
@@ -99,13 +97,10 @@ class Homedogs extends React.Component {
             </form>
             <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect(e)} />
           </Col>
-          <Col xs={4} md={5}>
+          <Col xs={4} md={4}>
             {this.state.team}
           </Col>
-        </Row>
-        <Row>
           <DataText datatext={this.state.datatext} name={this.state.teamName} update={false} />
-        </Row>
       </Grid>
     )
   }
