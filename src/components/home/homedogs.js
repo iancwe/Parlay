@@ -82,25 +82,25 @@ class Homedogs extends React.Component {
       <Grid>
         <h1>Matches Filter</h1>
         {/* container for result module component */}
-          <Col xs={4} md={4}>
-            <h4>Leagues</h4>
-            <form>
-              <label>
-                <input type='radio' name='league' value='epl' onClick={() => this.eng()} /> English
+        <Col xs={4} md={4}>
+          <h4>Leagues</h4>
+          <form>
+            <label>
+              <input type='radio' name='league' value='epl' onClick={() => this.eng()} /> English
               </label>
-              <label>
-                <input type='radio' name='league' value='laliga' onClick={() => this.spain()} /> Spanish
+            <label>
+              <input type='radio' name='league' value='laliga' onClick={() => this.spain()} /> Spanish
               </label>
-              <label>
-                <input type='radio' name='league' value='germ' onClick={() => this.german()} /> German
+            <label>
+              <input type='radio' name='league' value='germ' onClick={() => this.german()} /> German
               </label>
-            </form>
-            <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect(e)} />
-          </Col>
-          <Col xs={4} md={4}>
-            {this.state.team}
-          </Col>
-          <DataText datatext={this.state.datatext} name={this.state.teamName} update={false} />
+          </form>
+          <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect(e)} />
+        </Col>
+        <Col xs={4} md={4}>
+          {this.state.team}
+        </Col>
+        <DataText datatext={this.state.datatext} name={this.state.teamName} update={false} />
       </Grid>
     )
   }
