@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://iancwe.github.io/parlay/",
   "dependencies": {
+    "axios": "^0.16.1",
     "dotenv": "^4.0.0",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
