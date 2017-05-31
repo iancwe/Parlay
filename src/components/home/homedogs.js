@@ -4,6 +4,7 @@ import TeamList from '../teamlist/TeamList'
 import FilteredTeam from '../filteredteam/FilteredTeam'
 import DataText from '../datatext/DataText'
 import { Grid, Col } from 'react-bootstrap'
+import LeagPic from '../leagpic/LeagPic'
 
 class Homedogs extends React.Component {
 
@@ -14,25 +15,35 @@ class Homedogs extends React.Component {
       teams: [],
       team: <FilteredTeam img={'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg'} />,
       datatext: 'http://api.football-data.org/v1/teams/65/fixtures',
-      teamName: 'Manchester City FC'
+      teamName: 'Manchester City FC',
+      leaguePic: 'http://www.thesportsdb.com/images/media/league/logo/qrsvwu1467456743.png'
     }
   }
 
   // Function to be run when you select EPL
   eng () {
     this.display('426')
+    this.setState({
+      leaguePic: 'http://www.thesportsdb.com/images/media/league/logo/qrsvwu1467456743.png'
+    })
   }
 
   // Function to be run when you select Laliga
   spain () {
     console.log('laliga Chosen')
     this.display('436')
+    this.setState({
+      leaguePic: 'http://files.laliga.es/seccion_logos/laliga-v-600x600.png'
+    })
   }
 
   // Function to be run when you select Bundesliga
   german () {
     console.log('Bundesliga Chosen')
     this.display('430')
+    this.setState({
+      leaguePic: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Bundesliga_logo_%282017%29.svg/695px-Bundesliga_logo_%282017%29.svg.png'
+    })
   }
 
   // selected team from List
@@ -66,6 +77,8 @@ class Homedogs extends React.Component {
         apiLeague: data,
         teams: teamList
       })
+      console.log(this.state.apiLeague)
+      console.log(typeof (this.state.apiLeague))
     })
     .catch((err) => {
       console.log(err)
@@ -80,7 +93,7 @@ class Homedogs extends React.Component {
     return (
       // div for the main layout component
       <Grid>
-        <h1>Matches Filter</h1>
+        <h1>Team Filter</h1>
         {/* container for result module component */}
         <Col xs={4} md={4}>
           <h4>Leagues</h4>
@@ -96,6 +109,7 @@ class Homedogs extends React.Component {
               </label>
           </form>
           <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect(e)} />
+          <LeagPic leaguePic={this.state.leaguePic} />
         </Col>
         <Col xs={4} md={4}>
           {this.state.team}

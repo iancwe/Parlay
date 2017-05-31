@@ -21,7 +21,7 @@ class App extends Component {
               </Navbar.Header>
               <Navbar.Collapse>
                 <Nav pullRight>
-                  <MenuItem><NavLink to='/profile' activeClassName='selected' >Profile</NavLink></MenuItem>
+                  <MenuItem><NavLink to='/profile' activeClassName='selected' >Head2Head</NavLink></MenuItem>
                   <MenuItem><NavLink to='/logout' activeClassName='selected' >Log Out</NavLink></MenuItem>
                 </Nav>
               </Navbar.Collapse>

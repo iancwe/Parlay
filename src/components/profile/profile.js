@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
 class Profile extends React.Component {
 
-  render() {
+  render () {
     return (
       <div>
-        <h1>Profile page!</h1>
+        <h1>Head to Head</h1>
       </div>
-    );
+    )
   }
 
 }
 
-export default Profile;
+export default Profile
