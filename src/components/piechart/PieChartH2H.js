@@ -25,28 +25,24 @@ class PieChart extends React.Component {
     .innerRadius(radius - 40)
 
     var data = [{
-      'winloss': 'HW',
-      'amount': this.props.graphData.homeWins
+      'matchStat': 'DR',
+      'amount': this.props.teamDraw
     },
       {
-        'winloss': 'HL',
-        'amount': this.props.graphData.homeLoss
+        'matchStat': this.props.team1Code + ' AW',
+        'amount': this.props.team1AwayWin
       },
       {
-        'winloss': 'HD',
-        'amount': this.props.graphData.homeDraw
+        'matchStat': this.props.team1Code + ' HW',
+        'amount': this.props.team1HomeWin
       },
       {
-        'winloss': 'AW',
-        'amount': this.props.graphData.awayWins
+        'matchStat': this.props.team2Code + ' HW',
+        'amount': this.props.team2HomeWin
       },
       {
-        'winloss': 'AL',
-        'amount': this.props.graphData.awayLoss
-      },
-      {
-        'winloss': 'AD',
-        'amount': this.props.graphData.awayDraw
+        'matchStat': this.props.team2Code + ' AW',
+        'amount': this.props.team2AwayWin
       }
     ]
 
@@ -64,12 +60,13 @@ class PieChart extends React.Component {
 
     arc.append('path')
       .attr('d', path)
-      .attr('fill', function (d) { return color(d.data.winloss) })
+      .attr('fill', function (d) { return color(d.data.matchStat) })
 
     arc.append('text')
       .attr('transform', function (d) { return 'translate(' + label.centroid(d) + ')' })
       .attr('dy', '0.35em')
-      .text(function (d) { return d.data.winloss })
+      .attr('dy', '-0.5em')
+      .text(function (d) { return d.data.matchStat })
   }
   // chain reaction update for the graph
   componentDidUpdate () {
@@ -80,7 +77,7 @@ class PieChart extends React.Component {
     return (
       <div>
 
-        <svg width='300' height='300' />
+        <svg width='350' height='350' />
       </div>
     )
   }

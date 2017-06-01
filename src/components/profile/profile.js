@@ -3,6 +3,7 @@ import axios from 'axios'
 import TeamList from '../teamlist/TeamList'
 import FilteredTeam from '../filteredteam/FilteredTeam2'
 import H2hCal from '../h2hcal/H2hCal'
+import PieChart from '../piechart/PieChartH2H'
 
 class Profile extends React.Component {
 
@@ -29,7 +30,9 @@ class Profile extends React.Component {
       team2HomeGoal: 0,
       team2AwayGoal: 0,
       team1AwayGoal: 0,
-      recWins: []
+      recWins: [],
+      team1Code: '',
+      team2Code: ''
     }
   }
 
@@ -83,7 +86,8 @@ class Profile extends React.Component {
     this.setState({
       team1name: chosenTeamData.shortName,
       team1Crest: chosenTeamData.crestUrl,
-      team1: chosenTeamData.name
+      team1: chosenTeamData.name,
+      team1Code: chosenTeamData.code
     })
   }
 
@@ -95,7 +99,8 @@ class Profile extends React.Component {
     this.setState({
       team2name: chosenTeamData.shortName,
       team2Crest: chosenTeamData.crestUrl,
-      team2: chosenTeamData.name
+      team2: chosenTeamData.name,
+      team2Code: chosenTeamData.code
     })
   }
 
@@ -238,6 +243,7 @@ class Profile extends React.Component {
         <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect2(e)} />
         <FilteredTeam h2hpic={this.state.team2Crest} />
         <button onClick={() => this.h2hcal()}>Head2Head</button>
+        <PieChart team1Code={this.state.team1Code} team2Code={this.state.team2Code} teamDraw={this.state.teamDraw} team1HomeWin={this.state.team1HomeWin} team1AwayWin={this.state.team1AwayWin} team2HomeWin={this.state.team2HomeWin} team2AwayWin={this.state.team2AwayWin} />
         <H2hCal h2htotal={this.state.totH2h} tm1name={this.state.team1name} tm2name={this.state.team2name} teamDraw={this.state.teamDraw} team1HomeWin={this.state.team1HomeWin} team2HomeWin={this.state.team2HomeWin} team2AwayWin={this.state.team2AwayWin} team1AwayWin={this.state.team1AwayWin} team1HomeGoal={this.state.team1HomeGoal} team2HomeGoal={this.state.team2HomeGoal} team2AwayGoal={this.state.team2AwayGoal} team1AwayGoal={this.state.team1AwayGoal} recWins={this.state.recWins} />
       </div>
     )
