@@ -2,7 +2,6 @@
   "name": "parlay",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://iancwe.github.io/parlay/",
   "dependencies": {
     "axios": "^0.16.1",
     "dotenv": "^4.0.0",
