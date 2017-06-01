@@ -4,6 +4,7 @@ import TeamList from '../teamlist/TeamList'
 import FilteredTeam from '../filteredteam/FilteredTeam2'
 import H2hCal from '../h2hcal/H2hCal'
 import PieChart from '../piechart/PieChartH2H'
+import { Grid, Col, Row, Alert } from 'react-bootstrap'
 
 class Profile extends React.Component {
 
@@ -119,6 +120,9 @@ class Profile extends React.Component {
     })
     .then((fixtures) => {
       if (this.state.team1 === this.state.team2) {
+        // <Alert bsStyle='danger'>
+        //   Chosen Teams Can't Be the <strong>same</strong>
+        // </Alert>
         alert(`Chosen teams cant be the same`)
       } else {
         fixtures = fixtures.filter((match) => {
@@ -221,31 +225,43 @@ class Profile extends React.Component {
 
   render () {
     return (
-      <div>
-        <h1>Head to Head</h1>
-        <h4>Leagues</h4>
-        <form>
-          <label>
-            <input type='radio' name='league' value='epl' onClick={() => this.eng()} /> English
+      <Grid>
+        <Row>
+          <h1>Head to Head</h1>
+          <h4>Leagues</h4>
+          <form>
+            <label>
+              <input type='radio' name='league' value='epl' onClick={() => this.eng()} /> English
             </label>
-          <label>
-            <input type='radio' name='league' value='laliga' onClick={() => this.spain()} /> Spanish
+            <label>
+              <input type='radio' name='league' value='laliga' onClick={() => this.spain()} /> Spanish
             </label>
-          <label>
-            <input type='radio' name='league' value='germ' onClick={() => this.german()} /> German
+            <label>
+              <input type='radio' name='league' value='germ' onClick={() => this.german()} /> German
             </label>
-        </form>
-        {/* team1name is shortform */}
-        <label>{this.state.team1name}</label>
-        <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect(e)} />
-        <FilteredTeam h2hpic={this.state.team1Crest} />
-        <label>{this.state.team2name}</label>
-        <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect2(e)} />
-        <FilteredTeam h2hpic={this.state.team2Crest} />
+          </form>
+        </Row>
         <button onClick={() => this.h2hcal()}>Head2Head</button>
-        <PieChart team1Code={this.state.team1Code} team2Code={this.state.team2Code} teamDraw={this.state.teamDraw} team1HomeWin={this.state.team1HomeWin} team1AwayWin={this.state.team1AwayWin} team2HomeWin={this.state.team2HomeWin} team2AwayWin={this.state.team2AwayWin} />
-        <H2hCal h2htotal={this.state.totH2h} tm1name={this.state.team1name} tm2name={this.state.team2name} teamDraw={this.state.teamDraw} team1HomeWin={this.state.team1HomeWin} team2HomeWin={this.state.team2HomeWin} team2AwayWin={this.state.team2AwayWin} team1AwayWin={this.state.team1AwayWin} team1HomeGoal={this.state.team1HomeGoal} team2HomeGoal={this.state.team2HomeGoal} team2AwayGoal={this.state.team2AwayGoal} team1AwayGoal={this.state.team1AwayGoal} recWins={this.state.recWins} />
-      </div>
+        <Row>
+          {/* team1name is shortform */}
+          <Col md={6}>
+            <label>{this.state.team1name}</label>
+            <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect(e)} />
+            <FilteredTeam h2hpic={this.state.team1Crest} />
+          </Col>
+          <Col md={6}>
+            <label>{this.state.team2name}</label>
+            <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect2(e)} />
+            <FilteredTeam h2hpic={this.state.team2Crest} />
+          </Col>
+        </Row>
+        <Row>
+          <PieChart team1Code={this.state.team1Code} team2Code={this.state.team2Code} teamDraw={this.state.teamDraw} team1HomeWin={this.state.team1HomeWin} team1AwayWin={this.state.team1AwayWin} team2HomeWin={this.state.team2HomeWin} team2AwayWin={this.state.team2AwayWin} />
+        </Row>
+        <Row>
+          <H2hCal h2htotal={this.state.totH2h} tm1name={this.state.team1name} tm2name={this.state.team2name} teamDraw={this.state.teamDraw} team1HomeWin={this.state.team1HomeWin} team2HomeWin={this.state.team2HomeWin} team2AwayWin={this.state.team2AwayWin} team1AwayWin={this.state.team1AwayWin} team1HomeGoal={this.state.team1HomeGoal} team2HomeGoal={this.state.team2HomeGoal} team2AwayGoal={this.state.team2AwayGoal} team1AwayGoal={this.state.team1AwayGoal} recWins={this.state.recWins} />
+        </Row>
+      </Grid>
     )
   }
 

@@ -22,7 +22,7 @@ class App extends Component {
               <Navbar.Collapse>
                 <Nav pullRight>
                   <MenuItem><NavLink to='/head2head'>Head2Head</NavLink></MenuItem>
-                  <MenuItem><NavLink to='/strength'>Team Breakdown</NavLink></MenuItem>
+                  {/* <MenuItem><NavLink to='/strength'>Team Breakdown</NavLink></MenuItem> */}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>

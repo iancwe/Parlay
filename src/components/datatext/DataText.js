@@ -126,7 +126,7 @@ class DataText extends React.Component {
       <div>
         <PieChart graphData={this.state} />
         <h1>Latest Season Analysis</h1>
-        <Table responsive condensed>
+        <Table responsive bordered>
           <tbody>
             <tr>
               <th>Home Wins(HW): {this.state.homeWins}</th>
