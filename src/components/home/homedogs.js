@@ -14,10 +14,10 @@ class Homedogs extends React.Component {
     this.state = {
       apiLeague: '426',
       teams: [],
-      team: <FilteredTeam img={'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg'} />,
-      datatext: 'http://api.football-data.org/v1/teams/65/fixtures',
+      team: <FilteredTeam img={'//upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg'} />,
+      datatext: '//api.football-data.org/v1/teams/65/fixtures',
       teamName: 'Manchester City FC',
-      leaguePic: 'http://www.thesportsdb.com/images/media/league/logo/qrsvwu1467456743.png'
+      leaguePic: '//www.thesportsdb.com/images/media/league/logo/qrsvwu1467456743.png'
     }
   }
 
@@ -25,7 +25,7 @@ class Homedogs extends React.Component {
   eng () {
     this.display('426')
     this.setState({
-      leaguePic: 'http://www.thesportsdb.com/images/media/league/logo/qrsvwu1467456743.png'
+      leaguePic: '//www.thesportsdb.com/images/media/league/logo/qrsvwu1467456743.png'
     })
   }
 
@@ -34,7 +34,7 @@ class Homedogs extends React.Component {
     console.log('laliga Chosen')
     this.display('436')
     this.setState({
-      leaguePic: 'http://files.laliga.es/seccion_logos/laliga-v-600x600.png'
+      leaguePic: '//files.laliga.es/seccion_logos/laliga-v-600x600.png'
     })
   }
 
@@ -64,7 +64,7 @@ class Homedogs extends React.Component {
     axios({
       headers: { 'X-Auth-Token': process.env.REACT_APP_footballAPI },
       method: 'get',
-      url: 'http://api.football-data.org/v1/soccerseasons/' + data + '/teams',
+      url: '//api.football-data.org/v1/soccerseasons/' + data + '/teams',
       responseType: 'json',
       crossDomain: true
     })
