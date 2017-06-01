@@ -42,6 +42,21 @@ class H2hCal extends React.Component {
             </tr>
           </tbody>
         </Table>
+        <h4>Recent Matches</h4>
+        <Table responsive condensed>
+          <tbody>
+            <tr>
+              <th colSpan='5'>Latest to the left</th>
+            </tr>
+            <tr>
+              <td>{this.props.recWins[0]}</td>
+              <td>{this.props.recWins[1]}</td>
+              <td>{this.props.recWins[2]}</td>
+              <td>{this.props.recWins[3]}</td>
+              <td>{this.props.recWins[4]}</td>
+            </tr>
+          </tbody>
+        </Table>
       </div>
     )
   }

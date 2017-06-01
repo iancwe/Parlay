@@ -28,7 +28,8 @@ class Profile extends React.Component {
       team1HomeGoal: 0,
       team2HomeGoal: 0,
       team2AwayGoal: 0,
-      team1AwayGoal: 0
+      team1AwayGoal: 0,
+      recWins: []
     }
   }
 
@@ -121,7 +122,6 @@ class Profile extends React.Component {
           }
         })
         let fixtureUrl = fixtures[0]._links.self.href.replace('http', 'https')
-        console.log(fixtureUrl)
         this.setState({
           chosenFixture: fixtureUrl
         })
@@ -146,7 +146,6 @@ class Profile extends React.Component {
     return h2h
   })
   .then((h2h) => {
-    console.log(h2h.fixtures)
     let team1HomeWin = 0
     let team2HomeWin = 0
     let team2AwayWin = 0
@@ -194,7 +193,21 @@ class Profile extends React.Component {
     return h2h
   })
   .then((h2h) => {
-    console.log(h2h)
+    console.log(h2h.fixtures)
+    let recWins = []
+    h2h.fixtures.forEach((matches) => {
+      if (matches.result.goalsHomeTeam > matches.result.goalsAwayTeam) {
+        recWins.push(matches.homeTeamName)
+      } else if (matches.result.goalsHomeTeam < matches.result.goalsAwayTeam) {
+        recWins.push(matches.awayTeamName)
+      } else {
+        recWins.push('Draw')
+      }
+    })
+    console.log(recWins)
+    this.setState({
+      recWins: recWins
+    })
   })
   .catch((err) => {
     console.log(err)
@@ -225,7 +238,7 @@ class Profile extends React.Component {
         <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect2(e)} />
         <FilteredTeam h2hpic={this.state.team2Crest} />
         <button onClick={() => this.h2hcal()}>Head2Head</button>
-        <H2hCal h2htotal={this.state.totH2h} tm1name={this.state.team1name} tm2name={this.state.team2name} teamDraw={this.state.teamDraw} team1HomeWin={this.state.team1HomeWin} team2HomeWin={this.state.team2HomeWin} team2AwayWin={this.state.team2AwayWin} team1AwayWin={this.state.team1AwayWin} team1HomeGoal={this.state.team1HomeGoal} team2HomeGoal={this.state.team2HomeGoal} team2AwayGoal={this.state.team2AwayGoal} team1AwayGoal={this.state.team1AwayGoal} />
+        <H2hCal h2htotal={this.state.totH2h} tm1name={this.state.team1name} tm2name={this.state.team2name} teamDraw={this.state.teamDraw} team1HomeWin={this.state.team1HomeWin} team2HomeWin={this.state.team2HomeWin} team2AwayWin={this.state.team2AwayWin} team1AwayWin={this.state.team1AwayWin} team1HomeGoal={this.state.team1HomeGoal} team2HomeGoal={this.state.team2HomeGoal} team2AwayGoal={this.state.team2AwayGoal} team1AwayGoal={this.state.team1AwayGoal} recWins={this.state.recWins} />
       </div>
     )
   }
