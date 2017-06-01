@@ -15,7 +15,7 @@ class App extends Component {
             <Navbar>
               <Navbar.Header>
                 <Navbar.Brand>
-                  <NavLink to='/'>Parlay</NavLink>
+                  <NavLink to='/'>Datums?</NavLink>
                 </Navbar.Brand>
                 <Navbar.Toggle />
               </Navbar.Header>
