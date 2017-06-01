@@ -42,7 +42,7 @@ class Profile extends React.Component {
     axios({
       headers: { 'X-Auth-Token': process.env.REACT_APP_footballAPI },
       method: 'get',
-      url: 'http://api.football-data.org/v1/soccerseasons/' + data + '/teams',
+      url: '//api.football-data.org/v1/competitions/' + data + '/teams',
       responseType: 'json',
       crossDomain: true
     })
