@@ -45,7 +45,7 @@ I managed to cement down my main page and how it would look like which what comp
 
 After completing this main page, I decided that it was a little too underwhelming and simple. Thus I thought creating another page with head to head history of the two chosen team would be good as it further break down upcoming fixtures/games. So you are able to make better ~~bets~~... I mean predictions. With all these more accurate wireframe, building a react app does not seem as daunting anymore.
 
-![AWWW YISS](https://media.giphy.com/media/5K5ELLZKZfC0g/giphy.gif)
+![AWWW YISS](https://media3.giphy.com/media/gVoBC0SuaHStq/giphy.gif)
 
 ## Point of Interest Workflow
 
