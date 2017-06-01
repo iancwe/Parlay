@@ -28,11 +28,12 @@ class DataText extends React.Component {
   // calculation
   calculation () {
     // console.log(this.props.datatext)
-    let datatext_newurl = this.props.datatext.replace('http', 'https')
+    let datatextUrl = this.props.datatext.replace('http', 'https')
+    // datatext_newurl = datatext_newurl.replace('soccerseasons', 'competition')
     axios({
       headers: { 'X-Auth-Token': process.env.REACT_APP_footballAPI },
       method: 'get',
-      url: datatext_newurl,
+      url: datatextUrl,
       responseType: 'json',
       crossDomain: true
     })
