@@ -43,4 +43,69 @@ I managed to cement down my main page and how it would look like which what comp
 
 ![H2H wireframe]()
 
-After completing this main page, I decided that it was a little too underwhelming and simple. Thus I thought creating another page with head to head history of the two chosen team would be good as it further break down upcoming fixtures/games. So you are able to make better ~~bets~~... I mean predictions. 
+After completing this main page, I decided that it was a little too underwhelming and simple. Thus I thought creating another page with head to head history of the two chosen team would be good as it further break down upcoming fixtures/games. So you are able to make better ~~bets~~... I mean predictions. With all these more accurate wireframe, building a react app does not seem as daunting anymore.
+
+![AWWW YISS](https://media.giphy.com/media/5K5ELLZKZfC0g/giphy.gif)
+
+## Point of Interest Workflow
+
+ 1. Creating a proper state and prop flow for the component that would not interfere with the components lifecycles
+
+ 2. Manipulating JSON data to get the calculations and figures I needed.
+
+ 3. And another target I had was to try to make each component as isolated as possible. Thus just passing only props to each components and by having more building blocks. I am able to reuse these components again and it is easier to fix/code as well.
+
+ 4. Integrate more graphs and chart into the application since it's a data visualization website. However looking for graphs that work on react has been pretty tough. Still looking out for ```radar chart```
+
+ 5. implementation of a quadrant graph to easy display where teams in a specific league fall under. From rich to poorest and weakest to strongest team.
+
+## Notable Milestones
+
+## Deployment
+- [Heroku](https://dashboard.heroku.com/)
+
+## Built With
+- jQuery
+- React
+- Javascript
+- CSS
+- HTML
+- BootStrap
+- D3
+- react-router
+
+![witchcraft](https://i.imgur.com/H45R5Js.gif)
+
+## Bugs :bug:
+- Did not managed to do much or any animation on my graphs and components
+- Did not spend enough time on CSS for the application
+- Piechart text is hidden behind piechart sections at times
+
+## Further Development
+- Project still Work in Progress
+- Add in more API for different sports
+- Add in more graphs
+- Add in own prediction algorithms
+- MOAR CSS
+
+![SO MUCH TO BE DONE?!](https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif)
+
+## Resources  
+
+- Stack Overflow
+- D3 Documentation
+- React Bootstrap Documentation
+
+## Author
+[Ian Chong](https://github.com/iancwe)
+
+## Acknowledgments
+
+- [Yisheng](https://github.com/yisheng90)
+- [Sharona](https://github.com/sharona1610)
+- [Prima](https://github.com/primaulia)
+- [Raymond](https://github.com/ijmeister)
+- [Shirong](https://github.com/shirongfoo) (for the beachball)
+
+###### Its Been A great Ride! Onwards and Upwards
+![Its just beginning](https://media.giphy.com/media/67vqGUSuBRm9i/giphy.gif)
