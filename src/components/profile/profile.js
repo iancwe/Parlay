@@ -15,7 +15,8 @@ class Profile extends React.Component {
       team1name: 'Team A',
       team2name: 'Team B',
       team1Crest: '',
-      team2Crest: ''
+      team2Crest: '',
+      chosenFixture: ''
     }
   }
 
@@ -61,26 +62,60 @@ class Profile extends React.Component {
     })
   }
 
-  // selected team from List
+  // selected team1 from List
   teamSelect (e) {
     e.preventDefault()
     console.log(e.target.value, this.state.teams[e.target.value])
     let chosenTeamData = this.state.teams[e.target.value]
     this.setState({
       team1name: chosenTeamData.shortName,
-      team1Crest: chosenTeamData.crestUrl
+      team1Crest: chosenTeamData.crestUrl,
+      team1: chosenTeamData.name
     })
   }
 
-  // selected team from List
+  // selected team2 from List
   teamSelect2 (e) {
     e.preventDefault()
     console.log(e.target.value, this.state.teams[e.target.value])
     let chosenTeamData = this.state.teams[e.target.value]
     this.setState({
       team2name: chosenTeamData.shortName,
-      team2Crest: chosenTeamData.crestUrl
+      team2Crest: chosenTeamData.crestUrl,
+      team2: chosenTeamData.name
+    })
+  }
 
+  // plucking out fixtures from List
+  h2hcal () {
+    axios({
+      headers: { 'X-Auth-Token': process.env.REACT_APP_footballAPI },
+      method: 'get',
+      url: 'http://api.football-data.org/v1/competitions/' + this.state.apiLeague + '/fixtures',
+      responseType: 'json',
+      crossDomain: true
+    })
+    .then((response) => {
+      let fixtures = response.data.fixtures
+      return fixtures
+    })
+    .then((fixtures) => {
+      if (this.state.team1 === this.state.team2) {
+        alert(`Chosens teams cant be the same`)
+      } else {
+        fixtures = fixtures.filter((match) => {
+          if (match.homeTeamName === this.state.team2 && match.awayTeamName === this.state.team1) {
+            return match
+          }
+        })
+        console.log(fixtures[0]._links.self.href)
+        this.setState({
+          chosenFixture: fixtures[0]._links.self.href
+        })
+      }
+    })
+    .catch((err) => {
+      console.log(err)
     })
   }
 
@@ -106,6 +141,7 @@ class Profile extends React.Component {
         <label>{this.state.team2name}</label>
         <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect2(e)} />
         <FilteredTeam h2hpic={this.state.team2Crest} />
+        <button onClick={() => this.h2hcal()}>Head2Head</button>
       </div>
     )
   }
