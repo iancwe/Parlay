@@ -74,7 +74,7 @@ After completing this main page, I decided that it was a little too underwhelmin
 - D3
 - react-router
 
-![witchcraft](https://i.imgur.com/H45R5Js.gif)
+![witchcraft](https://media4.giphy.com/media/zIwIWQx12YNEI/giphy.gif)
 
 ## Bugs :bug:
 - Did not managed to do much or any animation on my graphs and components
@@ -88,7 +88,7 @@ After completing this main page, I decided that it was a little too underwhelmin
 - Add in own prediction algorithms
 - MOAR CSS
 
-![SO MUCH TO BE DONE?!](https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif)
+![SO MUCH TO BE DONE?!](https://media2.giphy.com/media/dbtDDSvWErdf2/giphy.gif)
 
 ## Resources  
 
