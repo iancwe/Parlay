@@ -9,6 +9,7 @@ import LeagPic from '../leagpic/LeagPic'
 class Homedogs extends React.Component {
 
   constructor (props) {
+    console.log('test')
     super(props)
     this.state = {
       apiLeague: '426',
