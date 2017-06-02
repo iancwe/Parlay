@@ -56,7 +56,7 @@ class H2hCal extends React.Component {
           <Table responsive condensed bordered>
             <tbody>
               <tr>
-                <th colSpan='5'>Latest to the left</th>
+                <th colSpan='5' className='text-center'>Latest to the left</th>
               </tr>
               <tr>
                 <td>{this.props.recWins[0]}</td>

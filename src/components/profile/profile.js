@@ -148,7 +148,6 @@ class Profile extends React.Component {
       console.log(err)
     })
   }
-  // help me
 
   headcal () {
     axios({
@@ -260,12 +259,12 @@ class Profile extends React.Component {
           <Col md={6}>
             <label>{this.state.team1name}</label>
             <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect(e)} />
-            <FilteredTeam h2hpic={this.state.team1Crest} />
+            {!this.state.team1Crest == '' && <FilteredTeam h2hpic={this.state.team1Crest} />}
           </Col>
           <Col md={6}>
             <label>{this.state.team2name}</label>
             <TeamList teams={this.state.teams} handleChoice={(e) => this.teamSelect2(e)} />
-            <FilteredTeam h2hpic={this.state.team2Crest} />
+            {!this.state.team2Crest == '' && <FilteredTeam h2hpic={this.state.team2Crest} />}
           </Col>
         </Row>
         <Row>
