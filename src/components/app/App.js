@@ -12,7 +12,7 @@ class App extends Component {
       <div className='App'>
         <Router>
           <div>
-            <Navbar>
+            <Navbar inverse>
               <Navbar.Header>
                 <Navbar.Brand>
                   <NavLink to='/'>Datums?</NavLink>

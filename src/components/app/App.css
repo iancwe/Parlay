@@ -1,3 +1,15 @@
 .App {
   text-align: center;
 }
+
+h1{
+  font-family: 'Roboto Slab', serif;
+}
+
+*, th ,td{
+  font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-color: rgb(127, 134, 131);
+}

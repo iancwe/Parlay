@@ -1,16 +1,19 @@
 import React from 'react'
-import { Table, Grid, Col, Row } from 'react-bootstrap'
+import { Table, Grid, Row } from 'react-bootstrap'
 
 class H2hCal extends React.Component {
   render () {
+    if (this.props.recWins.length === 0) {
+      return <div />
+    }
     return (
-      <Grid>
+      <Grid id='showhide'>
         <Row>
           <h1>Past Encounters</h1>
         </Row>
         <Row>
           <h4>Total Games: {this.props.h2htotal}</h4>
-          <Table responsive condensed bordered>
+          <Table responsive condensed bordered >
             <tbody>
               <tr>
                 <th>{this.props.tm1name} Home Wins</th>

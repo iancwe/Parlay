@@ -1,10 +1,12 @@
+import './profile.css'
 import React from 'react'
 import axios from 'axios'
 import TeamList from '../teamlist/TeamList'
 import FilteredTeam from '../filteredteam/FilteredTeam2'
 import H2hCal from '../h2hcal/H2hCal'
 import PieChart from '../piechart/PieChartH2H'
-import { Grid, Col, Row, Alert } from 'react-bootstrap'
+import { Grid, Col, Row } from 'react-bootstrap'
+import { RotateSpinLoader } from 'react-css-loaders'
 
 class Profile extends React.Component {
 
@@ -33,7 +35,8 @@ class Profile extends React.Component {
       team1AwayGoal: 0,
       recWins: [],
       team1Code: '',
-      team2Code: ''
+      team2Code: '',
+      trigg: false
     }
   }
 
@@ -107,6 +110,9 @@ class Profile extends React.Component {
 
   // plucking out fixtures from List
   h2hcal () {
+    this.setState({
+      trigg: true
+    })
     axios({
       headers: { 'X-Auth-Token': process.env.REACT_APP_footballAPI },
       method: 'get',
@@ -132,7 +138,8 @@ class Profile extends React.Component {
         })
         let fixtureUrl = fixtures[0]._links.self.href.replace('http', 'https')
         this.setState({
-          chosenFixture: fixtureUrl
+          chosenFixture: fixtureUrl,
+          trigg: false
         })
       }
       this.headcal()
@@ -198,6 +205,7 @@ class Profile extends React.Component {
       team2HomeGoal: team2HomeGoal,
       team2AwayGoal: team2AwayGoal,
       team1AwayGoal: team1AwayGoal
+      // trigg: false
     })
     return h2h
   })
@@ -217,6 +225,7 @@ class Profile extends React.Component {
     this.setState({
       recWins: recWins
     })
+    window.scrollTo(0, document.body.scrollHeight)
   })
   .catch((err) => {
     console.log(err)
@@ -224,6 +233,9 @@ class Profile extends React.Component {
   }
 
   render () {
+    if (this.state.trigg) {
+      return <RotateSpinLoader />
+    }
     return (
       <Grid>
         <Row>
