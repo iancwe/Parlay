@@ -181,7 +181,7 @@ Lastly would be the process of fetching API and how does promises work. Which wo
 ```
 So as show above after fetching the data from the API and only if the promise of receiving that data is fulfilled then only do we go on to the ```then()``` function but if there was some error in fetching then data from the API the promise would not be resolved and thus just straight to ```.catch()``` therefore I am able to manipulate my data in that initial API call and render it just one then call out another function.
 
-![Hey thats pretty good](https://media4.giphy.com/media/xThuW2Vrx2ruC42Dcc/giphy.gif) 
+![Hey thats pretty good](https://media4.giphy.com/media/xThuW2Vrx2ruC42Dcc/giphy.gif)
 
 ## Deployment
 - [Heroku](https://dashboard.heroku.com/)
@@ -195,8 +195,9 @@ So as show above after fetching the data from the API and only if the promise of
 - BootStrap
 - D3
 - react-router
+- Magic
 
-![witchcraft](https://i.imgur.com/H45R5Js.gif)
+![witchcraft](https://68.media.tumblr.com/f5892dd6042256098268e36fcf237dc7/tumblr_o485qw8Hke1qjmnzro1_1280.gif)
 
 ## Bugs :bug:
 - Did not managed to do much or any animation on my graphs and components
