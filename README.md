@@ -33,15 +33,15 @@ So in my project I did not really need a back-end server as I did not need any d
 
 Once I figured out on my MVP, I started drawing wireframe for my application. And I strongly advise that if anyone is planning on creating an react application, planning and drawing a wireframe is godsend. This is due to react having a unidirectional flow of state? I guess it means that the parent of the child component is the only component able to set the state and pass it down to the children, but the children are not able to set the state and pass it back to the parent component.
 
-![Wireframe of website]()
+![Wireframe of website](https://i.imgur.com/JzRDTH1.jpg)
 
 The first few wireframes that I drew consisted of a landing page with a log in and sign up button. But since my project was more towards letting the public have access to these football stats and that there was not much prediction algorithm it was fine not having an authentication system. The 2nd column of wireframes onwards very rough draft on how my main page and head to head pages would look like. But like I mentioned before having a very precise and accurate wireframe was of utmost importance when it comes to creating a react app. So I was still stuck on how to create my components and which should be a parent or child component.
 
-![Wireframes chapter 2]()
+![Wireframes chapter 2](https://i.imgur.com/xAdSCyj.jpg)
 
 I managed to cement down my main page and how it would look like which what components rendered in it. Thus able to breakdown each page furthermore and decide which should be the child component and what could be its own separate component. From this picture you are able to tell that  I came up with the whole page look first, then broke it down into the main layout component that has the Navbar. 2nd component to be rendered would be the result board, which consisted of a set of buttons to toggle between the leagues, picture of the chose team crest, a piechart graph and a table with data in it.
 
-![H2H wireframe]()
+![H2H wireframe](https://i.imgur.com/i3Raghb.jpg)
 
 After completing this main page, I decided that it was a little too underwhelming and simple. Thus I thought creating another page with head to head history of the two chosen team would be good as it further break down upcoming fixtures/games. So you are able to make better ~~bets~~... I mean predictions. With all these more accurate wireframe, building a react app does not seem as daunting anymore.
 
@@ -74,7 +74,7 @@ After completing this main page, I decided that it was a little too underwhelmin
 - D3
 - react-router
 
-![witchcraft](https://media4.giphy.com/media/zIwIWQx12YNEI/giphy.gif)
+![witchcraft](https://i.imgur.com/H45R5Js.gif)
 
 ## Bugs :bug:
 - Did not managed to do much or any animation on my graphs and components
