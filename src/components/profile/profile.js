@@ -148,6 +148,7 @@ class Profile extends React.Component {
       console.log(err)
     })
   }
+  // help me
 
   headcal () {
     axios({
