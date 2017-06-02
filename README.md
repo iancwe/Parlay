@@ -60,6 +60,128 @@ After completing this main page, I decided that it was a little too underwhelmin
  5. implementation of a quadrant graph to easy display where teams in a specific league fall under. From rich to poorest and weakest to strongest team.
 
 ## Notable Milestones
+During the process of creating this application there were a few notable Milestones that I was pretty interesting, as I was new to creating a react app.
+
+The first biggest issue as stated at the start of the README was initially comprehending how does component work and their lifecycles. So creating a parent component which is then populated by child component and so on if you have multiple children.
+
+| parent |
+|--------|
+| child  |
+| child  |
+
+However the biggest issue arises when you have one child (middle) that is sandwiched between another two components and if that middle child has a set state which then affects its child component ```componentDidUpdate ``` script, which will update the states and cause an render therefore creating a loop.  
+
+```
+shouldComponentUpdate (nextProps, nextState) {
+  if (nextProps.name !== this.props.name || nextState.teamName !== this.state.teamName) {
+    return true
+  }
+  return false
+}
+```
+Therefore, using the function ```shouldComponentUpdate``` which returns a boolean value, which in turns then either allow the component to update or not. In this case if the current prop name is the not the same as the newly updated prop name, then it would return true. Meaning that since it is a different set of data, the code will render itself to print the current data.
+
+Second biggest issue that I have faced is that of modeling a graph in react or Javascript. There are quite a handful of chart npm such as 'chart.js, react-vis and D3' In a way using D3 for small sums of data might seem like overkill. And again like the component, initially learning how to use D3 is pretty daunting and I would not say that I am not decent at it yet.
+
+```
+rendergraph () {
+  var svg = d3.select('svg')
+  var width = +svg.attr('width')
+  var height = +svg.attr('height')
+  var radius = Math.min(width, height) / 2
+  var g = svg.append('g').attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
+
+  var color = d3.scaleOrdinal(['#ff5e5b', '#d8d8d8', '#ffffea', '#00cecb', '#ffed66', '#5e2bff'])
+
+  var pie = d3.pie()
+  .sort(null)
+  .value(function (d) { return d.amount })
+
+  var path = d3.arc()
+  .outerRadius(radius - 10)
+  .innerRadius(0)
+
+  var label = d3.arc()
+  .outerRadius(radius - 40)
+  .innerRadius(radius - 40)
+
+  var arc = g.selectAll('.arc')
+  .data(pie(data))
+  .enter().append('g')
+    .attr('class', 'arc')
+
+  arc.append('path')
+    .attr('d', path)
+    .attr('fill', function (d) { return color(d.data.winloss) })
+
+  arc.append('text')
+    .attr('transform', function (d) { return 'translate(' + label.centroid(d) + ')' })
+    .attr('dy', '0.35em')
+    .text(function (d) { return d.data.winloss })
+}
+
+render () {
+  return (
+    <div>
+
+      <svg width='300' height='300' />
+    </div>
+  )
+}
+}
+```
+To be truthful, I kinda just scratch the surface of D3 but I think the path of the the piechart is changed whenever a new data is inputed and is redrawn each render. However if there was anything I was going to change or add to the piechart would be that of transition to make it more interactive.
+
+Lastly would be the process of fetching API and how does promises work. Which works hand in hand with the ```.then()``` and ```.catch()```  Just understanding how does a promise work is pretty interesting and the best example I came across would that be of a burger place.
+
+```
+
+  let datatextUrl = this.props.datatext.replace('http', 'https')
+  axios({
+    headers: { 'X-Auth-Token': process.env.REACT_APP_footballAPI },
+    method: 'get',
+    url: datatextUrl,
+    responseType: 'json',
+    crossDomain: true
+  })
+  .then((response) => {
+    let selectedresult = response.data.fixtures
+    let totalGames = selectedresult.length
+    console.log(selectedresult)
+    selectedresult.forEach((matches) => {
+      // homegames only
+      if (matches.homeTeamName === this.props.name) {
+        homeGames++
+        // homegame win
+        if (matches.result.goalsHomeTeam > matches.result.goalsAwayTeam) {
+          homeGoals += matches.result.goalsHomeTeam
+          homeAgainst += matches.result.goalsAwayTeam
+          homeWins++
+          // homegame loss
+        } else if (matches.result.goalsHomeTeam < matches.result.goalsAwayTeam) {
+          homeGoals += matches.result.goalsHomeTeam
+          homeAgainst += matches.result.goalsAwayTeam
+          homeLoss++
+        }
+      } else {
+        // awaygames only
+        if (matches.result.goalsAwayTeam > matches.result.goalsHomeTeam) {
+          // awaygame win
+          awayGoals += matches.result.goalsAwayTeam
+          awayAgainst += matches.result.goalsHomeTeam
+          awayWins++
+        } else if (matches.result.goalsAwayTeam < matches.result.goalsHomeTeam) {
+          // awaygame loss
+          awayGoals += matches.result.goalsAwayTeam
+          awayAgainst += matches.result.goalsHomeTeam
+          awayLoss++
+        }
+      }
+    })
+```
+So as show above after fetching the data from the API and only if the promise of receiving that data is fulfilled then only do we go on to the ```then()``` function but if there was some error in fetching then data from the API the promise would not be resolved and thus just straight to ```.catch()``` therefore I am able to manipulate my data in that initial API call and render it just one then call out another function.
+
+![Hey thats pretty good](https://media4.giphy.com/media/xThuW2Vrx2ruC42Dcc/giphy.gif) 
 
 ## Deployment
 - [Heroku](https://dashboard.heroku.com/)
